@@ -2,7 +2,8 @@
       implicit none
       real::c(1000,1000,3),tc(3),cell(3)
       character(7)::elemt(1000,1000) ! ,ALLOCATABLE
-      character(10)::flname,mname,tmname
+      character(255)::flname
+      character(10)::mname,tmname
       character(5)::telemnt
       integer::i,j,km(1000),nm,na,ia,l1,l2,tmp,nam(1000)
 

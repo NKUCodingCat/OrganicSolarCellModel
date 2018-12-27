@@ -80,7 +80,7 @@ if (funct==1) then ! obtain homo and lumo and its orbital number
 
   if (debug .eqv. .true. ) write(*,"(4(f10.6x))") hm,lm,27.2*hm,27.2*lm 
   if (debug .eqv. .true. ) write(*,*) nline 
-  write(*,"(2(i5x,f10.6x))") fnmo,27.2*hm, fnmo+1, 27.2*lm 
+  write(*,"(xa, 2(i5x,f10.6x))") fname, fnmo,27.2*hm, fnmo+1, 27.2*lm 
   stop
 
 else if (funct==2) then ! funct=2, write gjf from log 

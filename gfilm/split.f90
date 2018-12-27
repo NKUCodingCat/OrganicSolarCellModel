@@ -5,7 +5,8 @@
       real::c(1000,1000,3),dc(1000,3),cen(1000,3),dis(3),cutoff,dtc(1000,3) !c(im,ia,3)
       real::tdis,cell(3),kct,tdis1,tdis2(3)
       character(7)::elemt(1000,1000),delemt(2000) ! ,ALLOCATABLE
-      character(20)::flname,mnum,mnum2,cnum,cnum2,flnm
+      character(255)::flname
+      character(20)::mnum,mnum2,cnum,cnum2,flnm
       integer::st(1000,100),stt(1000,1000),km(1000),ncpu,tmp,tmp2 !,pair(1000,1000,2)
       character(20)::sets 
       character(100)::cmd
@@ -212,7 +213,10 @@ do m=1,nm
          call writegjf(flname,(nam(m)+nam(n)),dc,delemt,ncpu,sets) 
           rt=rt+4
 !         write(181,"(a,xa15,xa15,xa15,xxi0,xxi0,xa)") "calv", mnum,mnum2,flnm, km(m),km(n),">> v.out"
-         write(181,"(a,xa15,xa15,xa15,xi0,xi0,xa,a,i0)")  "calv", mnum,mnum2,flnm, km(m),km(n),">>", "v.out",ri 
+          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log", mnum,  1, "  >>", "E.out-r_", ri, "-Typ_", km(m)
+          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log", mnum2, 1, "  >>", "E.out-r_", ri, "-Typ_", km(n)
+          write(181,"(a,xa,xi0,xa,xa,i0,a)")     "g09log", flnm,  1, "  >>", "E.out-r_", ri, "-Typ_Dimer"
+          write(181,"(a,xa15,xa15,xa15,xi0,xi0,xa,a,i0)")  "calv", mnum,mnum2,flnm, km(m),km(n),">>", "v.out",ri 
 !          write(181,"(a)")  "wait"
          write(181,"(3(xa))") "sleep 30; rm",mnum2,flnm
          stt(m,n)=0 
