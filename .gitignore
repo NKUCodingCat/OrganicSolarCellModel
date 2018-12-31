@@ -1,7 +1,9 @@
 _test_/*.com
-_test_/run*
+_test_/*run*
 _test_/*.exe
 _test_/*.dat 
+_test_/*.out* 
 _test_/grp 
-_test_/in
+_test_/in*
 _test_/tcon
+_test_/fort*

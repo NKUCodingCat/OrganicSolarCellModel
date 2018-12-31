@@ -21,6 +21,7 @@
       times=0 
       open(111,file='inrw',status='old')
       read(111,*)  tht,eh, ns ,np ! tht record interval,electron-hole,simulation times
+      ! write(*, *) "tht = ", tht, "eh = ", eh, "NS = ", ns, "NP = ", np
       read(111,*)  (tre(1,i),i=1,4) ! energies of  kind one: 00 0+ ++ +0
       ! no-charge struct without charge; nocharge-struct-charged; charged-struct-charged;charged-struct-without charge
       read(111,*)  (tre(2,i),i=1,4)  !energies of  kind two: 00 0+ ++ +0
@@ -166,6 +167,7 @@ call init_random_seed()
 !do jj=1,5000
 
 !do  while (avttt<=1.0e-6) !!! number of hopping,points to plot a figure!!!
+! write(*, *) "tht = ", tht, "eh = ", eh, "NS = ", ns, "NP = ", np
 do ti=1,np
        tstd=0;      ttt=0 ! before summary of j th simulation, let the initial value to be zero
        
@@ -197,7 +199,7 @@ do ti=1,np
             write(*,130)  avttt,avstd
             write(191,"(4(xg16.8),xi0)")  (td(1,j),j=1,3),td(1,1)**2+td(1,2)**2+td(1,3)**2,st(1)
          
-      if (avttt>=1.0e-6) exit 
+      ! if (avttt>=1.0e-6) exit 
 end do ! 5000 points
 
 
