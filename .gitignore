@@ -7,3 +7,6 @@ _test_/grp
 _test_/in*
 _test_/tcon
 _test_/fort*
+_test_/solar/*
+*.o
+*.mod

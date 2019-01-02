@@ -4,11 +4,11 @@
       !Sample program using solvde. Computes eigenvalues of spheroidal harmonics Smn(x; c)
       !for m   0 and n   m. In the program, m is mm, c2 is c2, 
       implicit none
-      include 'mpif.h'
+      ! include 'mpif.h'
       INTEGER:: is,k,indexv(NE),mode,emode
       REAL(16):: deriv,q1,c(NCI,NCJ,NCK),s(NSI,NSJ),ac 
       REAL(16):: scalv(NE),y(NE,M),g,T,De,Dh,bgap,E0,Ed,LT,D
-      integer :: myid,ierr,npcs,status(MPI_STATUS_SIZE) 
+      integer :: myid,ierr,npcs! ,status(MPI_STATUS_SIZE) 
       real :: start, finish
 !       T=298 kt=25.6meV
 !      T0=57  = 273.15+57=330.15K
@@ -59,7 +59,7 @@
         call IV(mode,T,De,Dh,bgap,E0,Ed,LT,D,ac,Emode)
 !        write(*,*) e0,ed
 !        read(*,*)
-      call MPI_Finalize(ierr) 
+      ! call MPI_Finalize(ierr) 
       call cpu_time(finish) 
       print '("Time = ",f15.3," seconds.")',finish-start
      close(11)
@@ -72,11 +72,11 @@
       !Sample program using solvde. Computes eigenvalues of spheroidal harmonics Smn(x; c)
       !for m   0 and n   m. In the program, m is mm, c2 is c2, 
       implicit none
-      include 'mpif.h'
+      ! include 'mpif.h'
       INTEGER:: is,k,indexv(NE),mode ,emode
       REAL(16):: c(NCI,NCJ,NCK),s(NSI,NSJ),ac
       REAL(16):: D,scalv(NE),y(NE,M),T,De,Dh,bgap,E0,Ed,LT,tmp
-      integer :: myid,ierr,npcs,status(MPI_STATUS_SIZE) 
+      integer :: myid,ierr,npcs !,status(MPI_STATUS_SIZE) 
 
 !      n0=3.97E+18*1.6E-19 !Nc  integral of DOS
 !       n0=3.97E+18*1.6E-19
@@ -111,16 +111,16 @@
 
      tmp=bgapv/D
 
-      call MPI_INIT( ierr )     
-      call MPI_COMM_RANK( MPI_COMM_WORLD, myid, ierr )     
-      call MPI_COMM_SIZE( MPI_COMM_WORLD, npcs, ierr )
-       if (myid== 0)  write (*,"(a)") "   it    V(mV)    J(mA)        n         p       E" 
-       
+      ! call MPI_INIT( ierr )     
+      ! call MPI_COMM_RANK( MPI_COMM_WORLD, myid, ierr )     
+      ! call MPI_COMM_SIZE( MPI_COMM_WORLD, npcs, ierr )
+     myid = 0
+     npcs = 1
+      write (*,"(a)") "   it    V(mV)    J(mA)        n         p       E" 
        do is=myid,npoint,npcs 
 !       do is=npoint-myid,1,-npcs 
             st =1
             y=0;s=0;c=0
-!            write(*,*) is,'begin st',st
              v=bgapv*is/npoint - bgapv ! v=0-1300,v=
              if (emode==1) then 
                E0=-0.05*(V+bgapv)/D!+650!  -0.05*1.0/D;  !! V/cm
