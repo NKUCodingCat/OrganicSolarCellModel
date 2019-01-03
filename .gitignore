@@ -10,3 +10,4 @@ _test_/fort*
 _test_/solar/*
 *.o
 *.mod
+bin
