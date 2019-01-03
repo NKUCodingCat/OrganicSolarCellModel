@@ -215,9 +215,9 @@ do m=1,nm
 !         write(181,"(a,xa15,xa15,xa15,xxi0,xxi0,xa)") "calv", mnum,mnum2,flnm, km(m),km(n),">> v.out"
 !         Process E.out by  ` cat E.out-*-Typ_2 | sed "s/\([0-9]\+\)m.\+\.log/\1/g" | awk '!a[$1]++' `
 !         Trust me, IT WORKS!(by JT Chen)
-          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log", mnum,  1, "  >>", "E.out-r_", ri, "-Typ_", km(m)
-          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log", mnum2, 1, "  >>", "E.out-r_", ri, "-Typ_", km(n)
-          write(181,"(a,xa,xi0,xa,xa,i0,a)")     "g09log", flnm,  1, "  >>", "E.out-r_", ri, "-Typ_Dimer"
+          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log.exe", mnum,  1, "  >>", "E.out-r_", ri, "-Typ_", km(m)
+          write(181,"(a,xa,xi0,xa,xa,i0,a,i0)")  "g09log.exe", mnum2, 1, "  >>", "E.out-r_", ri, "-Typ_", km(n)
+          write(181,"(a,xa,xi0,xa,xa,i0,a)")     "g09log.exe", flnm,  1, "  >>", "E.out-r_", ri, "-Typ_Dimer"
           write(181,"(a,xa15,xa15,xa15,xi0,xi0,xa,a,i0)")  "calv.exe", mnum,mnum2,flnm, km(m),km(n),">>", "v.out",ri 
 !          write(181,"(a)")  "wait"
          write(181,"(3(xa))") "sleep 30; rm",mnum2,flnm

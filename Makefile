@@ -22,5 +22,8 @@ util: utils/mo.f90 utils/statistics.f90 | bin
 	$(FC) $(FCL) utils/mo.f90 -o bin/mo.exe
 	$(FC) $(FCL) utils/statistics.f90 -o bin/statistics.exe
 
+glog: g09log.f90 | bin
+	$(FC) $(FCL) g09log.f90 -o bin/g09log.exe
+
 clean:
 	rm -f bin/*.exe
