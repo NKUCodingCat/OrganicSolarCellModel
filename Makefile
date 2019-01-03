@@ -2,7 +2,7 @@ FC=gfortran
 FCL=-O3 -static
 
 .PHONY: all
-all: rwb vcal split solar util
+all: rwb vcal split solar util glog
 bin:
 	mkdir bin
 
